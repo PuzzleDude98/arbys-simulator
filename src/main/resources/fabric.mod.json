@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "arbys-simulator",
+	"version": "${version}",
+	"name": "Arbys Simulator",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/arbys-simulator/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.pd98.arbys_simulator.ArbysSimulator"
+		],
+		"client": [
+			"net.pd98.arbys_simulator.ArbysSimulatorClient"
+		]
+	},
+	"mixins": [
+		"arbys-simulator.mixins.json",
+		{
+			"config": "arbys-simulator.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.17.3",
+		"minecraft": "~1.21.10",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}

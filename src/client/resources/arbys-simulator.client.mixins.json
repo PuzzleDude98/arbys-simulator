@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "net.pd98.arbys_simulator.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"ExampleClientMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
