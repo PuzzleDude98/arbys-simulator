@@ -41,12 +41,6 @@ public class InstabilityManager {
     protected static void intialize() { }
 
     public static void tickInventory() {
-        UseItemCallback.EVENT.register((player, world, hand) -> {
-            LOGGER.info(hand.getEquipmentSlot().asString());
-            nukeItem(player, ArbysSimulator.getEquipmentSlotIndex(hand.getEquipmentSlot(),player));
-            return ActionResult.PASS;
-        });
-
         ServerTickEvents.END_SERVER_TICK.register(server -> {
             for (PlayerEntity player : server.getPlayerManager().getPlayerList()) {
                 Random random = player.getRandom();
