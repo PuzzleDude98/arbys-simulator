@@ -3,7 +3,7 @@
 	"package": "net.pd98.arbys_simulator.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"PickupItemMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

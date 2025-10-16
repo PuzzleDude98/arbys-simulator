@@ -1,24 +1,41 @@
 package net.pd98.arbys_simulator;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.minecraft.entity.EquipmentSlot;
+import net.minecraft.entity.player.PlayerEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ArbysSimulator implements ModInitializer {
+public class ArbysSimulator implements ModInitializer{
 	public static final String MOD_ID = "arbys-simulator";
 
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
 	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
-
 		LOGGER.info("Hello Fabric world!");
+		InstabilityManager.intialize();
+
+		InstabilityManager.tickInventory();
 	}
+
+	public static int getEquipmentSlotIndex(EquipmentSlot slot, PlayerEntity player){
+		return switch (slot) {
+			case HEAD  -> 39;
+			case CHEST -> 38;
+			case LEGS  -> 37;
+			case FEET  -> 36;
+			case MAINHAND -> {
+				LOGGER.info("MAINHAND!");
+				LOGGER.info(String.valueOf(player.getInventory().getSelectedSlot()));
+				yield player.getInventory().getSelectedSlot();
+			}
+			case OFFHAND -> 40;
+            default -> {
+                LOGGER.error("Non-player equipment slot attempted to convert to index!");
+				yield -1;
+            }
+        };
+	}
+
 }
